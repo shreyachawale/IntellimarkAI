@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-violet-600 via-blue-500 to-purple-600 bg-clip-text text-transparent;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+}
+
+.section-padding {
+  @apply py-24 md:py-32;
+}
+
+/* Pattern Background */
+.pattern-dots {
+  background-image: radial-gradient(circle, #6d28d9 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Glass Effect */
+.glass-effect {
+  @apply bg-white/80 backdrop-blur-lg;
+}
+
+/* Gradient Border */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(to right, #7c3aed, #2563eb);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.corner-circle::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  opacity: 0.05;
+  transform: scale(0.8);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.corner-circle:hover::before {
+  opacity: 0.15;
+  transform: scale(1.2);
+}
+
